@@ -1,4 +1,9 @@
+# Build output
+/build/
 *.class
+
+# Gradle dependency resolution
+.gradle/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
