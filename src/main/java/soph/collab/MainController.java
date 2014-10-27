@@ -24,21 +24,19 @@ public class MainController {
     public String listDatabases() {
         StringBuilder buffer = new StringBuilder();
         for (String db : eInfoservice.listDatabases()) {
-            if (buffer.length() > 0)
-                buffer.append(", ");
             buffer.append(db);
+            buffer.append("\n");
         }
-        return "Databases: " + buffer.toString();
+        return "Databases:\n" + buffer.toString();
     }
 
     @RequestMapping("/searchpubmed")
     public String searchpubmed() {
         StringBuilder buffer = new StringBuilder();
         for (String db : eSearchservice.searchForAuthor("Allison DB")) {
-            if (buffer.length() > 0)
-                buffer.append(", ");
             buffer.append(db);
+            buffer.append("\n");
         }
-        return "Articles: " + buffer.toString();
+        return "Articles:\n" + buffer.toString();
     }
 }
