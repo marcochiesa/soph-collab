@@ -1,8 +1,19 @@
 package soph.collab.util;
 
+import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.Collection;
+import java.util.regex.Pattern;
 
 public final class StringUtils {
+
+    public static final String ENCODING = "UTF-8";
+    public static final String EMPTY = "";
+    public static final String SPACE = " ";
+    public static final String COMMA = ",";
+    public static final Pattern SPACE_PATTERN = Pattern.compile(SPACE);
+    public static final Pattern COMMA_PATTERN = Pattern.compile(COMMA);
+    public static final Pattern EOL_PATTERN = Pattern.compile("\n");
 
     /**
      * Escape the given as HTML.
@@ -50,9 +61,28 @@ public final class StringUtils {
 
     public static String urlEncode(String s) {
         try {
-            return URLEncoder.encode(s, "UTF-8");
+            return URLEncoder.encode(s, ENCODING);
         } catch (Exception e) {
             return s;
         }
+    }
+
+    public static String urlDecode(String url) {
+        try {
+            return URLDecoder.decode(url, ENCODING);
+        } catch (Exception e) {
+            return url;
+        }
+    }
+
+    public static boolean hasText(String s) {
+        return org.springframework.util.StringUtils.hasText(s);
+    }
+
+    public static String join(Collection<String> collection) {
+        return join(collection, COMMA);
+    }
+    public static String join(Collection<String> collection, String delimiter) {
+        return org.springframework.util.StringUtils.collectionToDelimitedString(collection, delimiter);
     }
 }
