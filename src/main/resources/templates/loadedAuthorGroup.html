@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Successfully Loaded Authors</title>
+    </head>
+    <body>
+        <h1>Success!</h1>
+        <div>Loaded <span th:text="${authorCount}"/> author(s).</div>
+        <div>
+            <div th:each="author : ${authorGroup.authors}" th:text="${author.name}"/>
+        </div>
+    </body>
+</html>

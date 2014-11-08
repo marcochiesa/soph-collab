@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Load Author List</title>
+    </head>
+    <body>
+        <h1>Please load a list of author names</h1>
+        <form action="#" th:action="@{/authorGroupForm}" th:object="${authorGroupForm}" method="post">
+            <textarea rows="20" cols="80" th:field="*{authorNames}" th:errorclass="fieldError">
+            </textarea>
+            <p th:if="${#fields.hasErrors('authorNames')}" th:errors="*{authorNames}">Incorrect date</p>
+            <br />
+            <input type="text" th:field="*{commonalities}" th:errorclass="fieldError" />
+            <p th:if="${#fields.hasErrors('commonalities')}" th:errors="*{commonalities}">Incorrect date</p>
+            <br />
+            <p th:if="${#fields.hasGlobalErrors()}" th:errors="*{global}">Incorrect date</p>
+            <br />
+            <input type="submit" value="Submit"/>
+        </form>
+    </body>
+</html>
